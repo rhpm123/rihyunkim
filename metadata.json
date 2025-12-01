@@ -1,0 +1,5 @@
+{
+  "name": "Veo Director Studio",
+  "description": "A professional video generation interface using Google Veo. Turn structured script prompts into high-quality AI video clips.",
+  "requestFramePermissions": []
+}
