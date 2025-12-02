@@ -13,7 +13,21 @@ export interface CompositionState {
   character_scale: number;
   character_x: number;
   character_y: number;
-  remove_background: boolean;
+  chroma_key: 'none' | 'white' | 'green';
+}
+
+export interface CompositionPreset {
+  id: string;
+  name: string;
+  data: CompositionState;
+}
+
+export interface GeneratedAsset {
+  id: string;
+  type: 'image' | 'video';
+  url: string;
+  timestamp: number;
+  prompt?: string;
 }
 
 export interface Cut {
@@ -23,10 +37,11 @@ export interface Cut {
   status: GenerationStatus;
   videoUrl?: string;
   error?: string;
-  progress?: number; // For polling visuals
-  statusMessage?: string; // Detailed logs (e.g. "Uploading...", "Cooling down...")
-  startTime?: number; // Timestamp when generation started
-  composition?: CompositionState; // Layered composition state
+  progress?: number; 
+  statusMessage?: string; 
+  startTime?: number; 
+  composition?: CompositionState;
+  history?: GeneratedAsset[]; // Log of generated content
 }
 
 export interface Scene {
@@ -44,9 +59,10 @@ export interface Project {
   project_title: string;
   default_settings: ProjectSettings;
   scenes: Scene[];
-  global_image?: string; // Data URL for the default background
-  global_prompts?: { [key: string]: string }; // Store separate master prompts
-  assets: string[]; // Library of all available image assets
+  global_image?: string; 
+  global_prompts?: { [key: string]: string }; 
+  assets: string[]; 
+  compositionPresets: CompositionPreset[]; 
 }
 
 export interface GeneratedVideo {
