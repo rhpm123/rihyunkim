@@ -10,10 +10,12 @@ export interface Prompts {
 export interface CompositionState {
   background_asset?: string;
   character_asset?: string;
-  character_scale: number;
-  character_x: number;
-  character_y: number;
-  chroma_key: 'none' | 'white' | 'green';
+  character_scale?: number;
+  character_x?: number;
+  character_y?: number;
+  background_x?: number;
+  background_y?: number;
+  chroma_key?: 'none' | 'white' | 'green';
 }
 
 export interface CompositionPreset {
@@ -60,6 +62,14 @@ export interface Project {
   default_settings: ProjectSettings;
   scenes: Scene[];
   global_image?: string; 
+  global_bg_scale?: number; 
+  global_bg_x?: number;
+  global_bg_y?: number;
+  global_character_image?: string; 
+  global_character_scale?: number; 
+  global_character_x?: number;     
+  global_character_y?: number;     
+  global_chroma_key?: 'none' | 'white' | 'green'; 
   global_prompts?: { [key: string]: string }; 
   assets: string[]; 
   compositionPresets: CompositionPreset[]; 
